@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" prefHeight="364.0" prefWidth="292.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.winassistant.controller.Controller">
+   <HBox fx:id="headerPane" alignment="CENTER_LEFT" prefHeight="34.0" style="-fx-background-color: #cfFfcf;">
+      <children>
+         <Button fx:id="menuButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" textAlignment="CENTER" />
+         <Button fx:id="userButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="224.0" text="Baptiste Magous" textAlignment="CENTER" />
+         <Button fx:id="hideButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" textAlignment="CENTER" />
+      </children>
+   </HBox>
+   <Pane fx:id="content" prefHeight="430.0" prefWidth="292.0" />
+</VBox>
