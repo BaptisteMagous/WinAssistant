@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="content" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" scaleShape="false" style="-fx-background-color: #00000000;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.winassistant.controller.Controller">
+<Pane fx:id="content" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" scaleShape="false" style="-fx-background-color: #00000000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.winassistant.controller.Controller">
    <children>
       <Button fx:id="maximiseButton" cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="0.0" mnemonicParsing="false" onAction="#onMaximiseButtonClick" prefHeight="70.0" prefWidth="70.0" scaleShape="false" style="-fx-background-color: #00000000; -fx-padding: 0;">
          <graphic>

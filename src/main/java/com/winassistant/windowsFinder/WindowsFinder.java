@@ -1,5 +1,6 @@
-package com.winassistant;
+package com.winassistant.windowsFinder;
 
+import com.sun.jna.Callback;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.win32.StdCallLibrary;
@@ -9,14 +10,19 @@ import com.sun.jna.win32.W32APITypeMapper;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.sun.jna.Library.OPTION_FUNCTION_MAPPER;
-import static com.sun.jna.Library.OPTION_TYPE_MAPPER;
+import com.winassistant.Application;
+import com.winassistant.data.DataManager;
 
 public interface WindowsFinder extends StdCallLibrary
 {
-    public static final int WINDOW_TOPMOST    = -1;
+    public static final Pointer WINDOW_TOPMOST    = new Pointer(-1);
 
-    public static final int WINDOW_NONTOPMOST = -2;
+    public static final Pointer WINDOW_NONTOPMOST = new Pointer(-2);
+
+    public static final int SW_SHOW = 5;
+    public static final int SW_RESTORE = 9;
+    public static final int SW_SHOWMAXIMIZED = 3;
+
 
     Map<String, Object> UNICODE_OPTIONS   = new HashMap<String, Object>()
     {
@@ -52,6 +58,30 @@ public interface WindowsFinder extends StdCallLibrary
 
     void SetFocus(Pointer hWnd);
 
-    boolean SetWindowPos(Pointer hWnd, int hWndAfter, int x, int y, int cx,
+    boolean ShowWindow(Pointer hWnd, int nCmdShow);
+
+    boolean SetWindowPos(Pointer hWnd, Pointer hWndAfter, int x, int y, int cx,
                          int cy, int flags);
+
+    boolean EnumWindows(WinsowsCallback callback, StringByReference lParam);
+
+    int GetWindowTextA(Pointer hWnd, StringByReference lpString, int nMaxCount);
+
+    interface WinsowsCallback extends Callback {
+        boolean invoke(Pointer hwnd, StringByReference lParam);
+    }
+
+    class ExampleCallbackImpl implements WinsowsCallback {
+        public String windowsToSearch = "";
+        public boolean invoke(Pointer hwnd, StringByReference windowsToSearch) {
+            StringByReference name = new StringByReference();
+            WindowsFinder.INSTANCE.GetWindowTextA(hwnd, name, 100);
+
+            if(name.getValue().contains(windowsToSearch.getValue())){
+                Application.windowsHandle = hwnd;
+                return false;
+            }
+            return true;
+        }
+    }
 }

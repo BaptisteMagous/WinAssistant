@@ -1,7 +1,5 @@
 package com.winassistant.data;
 
-import com.winassistant.widget.Article;
-
 import java.util.HashMap;
 import java.util.Map;
 

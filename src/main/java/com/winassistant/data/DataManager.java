@@ -1,7 +1,8 @@
 package com.winassistant.data;
 
 import com.google.gson.Gson;
-import com.winassistant.widget.Article;
+import com.winassistant.windowsFinder.WindowsFinder;
+import javafx.scene.control.TextField;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;

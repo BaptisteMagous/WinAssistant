@@ -1,5 +1,6 @@
 package com.winassistant;
 
+import com.sun.jna.Pointer;
 import com.winassistant.data.DataManager;
 import com.winassistant.widget.MainMenu;
 import com.winassistant.widget.MainScene;
@@ -12,6 +13,9 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
+
+    public static String valueToSearch = "Discord";
+    public static Pointer windowsHandle = null;
 
     public static Application main;
     MainScene mainScene;

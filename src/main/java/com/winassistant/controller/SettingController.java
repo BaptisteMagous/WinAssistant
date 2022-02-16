@@ -3,6 +3,7 @@ package com.winassistant.controller;
 import com.winassistant.Application;
 import com.winassistant.data.DataManager;
 import com.winassistant.widget.MainMenu;
+import com.winassistant.windowsFinder.WindowsFinder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -22,7 +23,6 @@ public class SettingController {
 
     @FXML
     protected void manualLoad(ActionEvent event) throws IOException {
-        DataManager.save();
         DataManager.load();
 
         Button button = (Button) event.getSource();
@@ -35,6 +35,7 @@ public class SettingController {
         DataManager.getSettings().setWindowsName(((TextField) node.getParent().lookup("#windowsName")).getText());
         DataManager.save();
 
+        Application.windowsHandle = null;
         Application.main.loadContent(new MainMenu().getContent());
     }
 
