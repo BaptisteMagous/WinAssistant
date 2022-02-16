@@ -29,8 +29,11 @@ public class MainMenu extends ContentPage{
 
     public MainMenu(String search) throws IOException {
         this();
+/*
 
-        Article[] articles = DataManager.getPreferences(0/*Application.userCode*/);
+        Article[] articles = DataManager.getPreferences(0*/
+/*Application.userCode*//*
+);
         if(articles.length == 0) articles = DataManager.getDefaultArticles();
 
 
@@ -39,6 +42,7 @@ public class MainMenu extends ContentPage{
         }
 
         ((ScrollPane) content.lookup("#articles")).setContent(articlesPane);
+*/
 
 
     }
