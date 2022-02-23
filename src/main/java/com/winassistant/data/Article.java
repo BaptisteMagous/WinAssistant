@@ -1,5 +1,8 @@
 package com.winassistant.data;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Article {
     private String title;
     private String description;
@@ -33,5 +36,11 @@ public class Article {
 
     public void setShortcuts(Shortcut[] shortcuts) {
         this.shortcuts = shortcuts;
+    }
+
+    public void addShortcut(Shortcut shortcut) {
+        ArrayList<Shortcut> newShortcuts = new ArrayList<Shortcut>(Arrays.asList(this.getShortcuts()));
+        newShortcuts.add(shortcut);
+        this.setShortcuts(newShortcuts.toArray(new Shortcut[0]));
     }
 }

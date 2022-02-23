@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="96.0" prefWidth="300.0" style="-fx-border-color: #4f9f4f; -fx-border-width: 2px; -fx-background-color: #dfffdf; -fx-border-radius: 4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.winassistant.controller.Controller">
+<VBox alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="96.0" prefWidth="300.0" style="-fx-border-color: #4f9f4f; -fx-border-width: 2px; -fx-background-color: #dfffdf; -fx-border-radius: 4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.winassistant.controller.ArticleController">
    <children>
       <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="Cuire des quiches" textAlignment="CENTER" wrappingWidth="179.13671875" VBox.vgrow="ALWAYS" />
       <Text fx:id="shortcut" strokeType="OUTSIDE" strokeWidth="0.0" text="Ctrl + Shift + A" textAlignment="CENTER" />

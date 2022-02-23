@@ -29,20 +29,23 @@ public class MainMenu extends ContentPage{
 
     public MainMenu(String search) throws IOException {
         this();
-/*
-
-        Article[] articles = DataManager.getPreferences(0*/
-/*Application.userCode*//*
-);
-        if(articles.length == 0) articles = DataManager.getDefaultArticles();
 
 
-        for(int i = 0; i < articles.length; i++){
-            articlesPane.getChildren().add(new ArticleWidget(articles[i]).getContent());
+        Article[] articles = DataManager.searchArticles(search);
+        if(articles.length == 0) ((ScrollPane) content.lookup("#articles")).setContent(new NoArticleWidget().getContent());
+
+        else{
+            VBox articlesPane = new VBox();
+            articlesPane.setSpacing(10);
+
+            for(int i = 0; i < articles.length; i++){
+                articlesPane.getChildren().add(new ArticleWidget(articles[i]).getContent());
+            }
+
+            ((ScrollPane) content.lookup("#articles")).setContent(articlesPane);
+
         }
 
-        ((ScrollPane) content.lookup("#articles")).setContent(articlesPane);
-*/
 
 
     }

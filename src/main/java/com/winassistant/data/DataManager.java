@@ -26,8 +26,12 @@ public class DataManager
         return userArticles;
     }
 
-    public static Article[] getArticles(String research){
-        return null; // TODO
+    public static Article[] getArticles(){
+        return data.articles.values().toArray(new Article[0]);
+    }
+
+    public static Integer[] getArticlesId(){
+        return data.articles.keySet().toArray(new Integer[0]);
     }
 
     public static Article get(Integer id){
@@ -67,7 +71,7 @@ public class DataManager
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             } else {
-                System.out.println("File already exists.");
+                //System.out.println("File already exists.");
             }
         }
 
@@ -87,5 +91,29 @@ public class DataManager
 
     public static SettingsData getSettings(){
         return data.settings;
+    }
+
+    public static Article[] searchArticles(String search) {
+        return data.articles.entrySet()
+                .stream()
+                .filter(e -> e.getValue().getTitle().contains(search))
+                .map(e -> e.getValue())
+                .toArray(Article[]::new);
+    }
+
+    public static void addArticle(Article article) {
+        //The new id is :
+        //                 (the maximum found id) + 1
+        int id = data.articles.keySet().stream().max(Integer::compare).get() + 1;
+
+        data.articles.put(id, article);
+
+        save();
+    }
+
+    public static void deleteArticle(int articleId) {
+        data.articles.remove(articleId);
+
+        save();
     }
 }

@@ -7,16 +7,19 @@ import com.winassistant.windowsFinder.StringByReference;
 import com.winassistant.windowsFinder.WindowsFinder;
 import com.winassistant.data.Article;
 import com.winassistant.widget.MainMenu;
-import com.winassistant.widget.UserProfile;
+import com.winassistant.widget.Options;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
 import javafx.scene.text.Text;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class Controller {
@@ -36,7 +39,7 @@ public class Controller {
     }
 
     @FXML
-    protected void onMaximiseButtonClick() {
+    protected void onMaximiseButtonClick(ActionEvent event) {
         Application.main.maximise();
     }
 
@@ -47,53 +50,20 @@ public class Controller {
 
     @FXML
     protected void goToUserProfile() throws IOException {
-        Application.main.loadContent(new UserProfile(/*app.getUser()*/).getContent()  );
+        Application.main.loadContent(new Options(/*app.getUser()*/).getContent()  );
     }
 
     @FXML
-    protected void useShortcut(ActionEvent event) throws AWTException {
-        WindowsFinder windowsFinder = WindowsFinder.INSTANCE;
-
-        int interation = 0;
-
-        do{
-            WindowsFinder.ExampleCallbackImpl callback = new WindowsFinder.ExampleCallbackImpl();
-
-            if(interation > 0) windowsFinder.EnumWindows(callback, new StringByReference(DataManager.getSettings().getWindowsName()));
-            if(interation > 0) System.out.println(DataManager.getSettings().getWindowsName());
-            Native.setLastError(0);
-            windowsFinder.ShowWindow(Application.windowsHandle, WindowsFinder.SW_SHOWMAXIMIZED);
-        }
-        while(Native.getLastError() != 0 && interation++ < 5);
-
+    protected void search(ActionEvent event) throws IOException {
         Node node = (Node) event.getSource();
-        Article data = (Article) node.getUserData();
 
-        if(Native.getLastError() == 0){
-            windowsFinder.SetWindowPos(Application.windowsHandle, WindowsFinder.WINDOW_TOPMOST, 0, 0, 0, 0, 43);
-            Robot robot = new Robot();
-
-            for(int i = 0; i < data.getShortcuts().length; i++){
-                if(data.getShortcuts()[i].isCtrl()) robot.keyPress(KeyEvent.VK_CONTROL);
-                if(data.getShortcuts()[i].isShift()) robot.keyPress(KeyEvent.VK_SHIFT);
-                if(data.getShortcuts()[i].isAlt()) robot.keyPress(KeyEvent.VK_ALT);
-
-                robot.keyPress(data.getShortcuts()[i].getKey());
-                robot.keyRelease(data.getShortcuts()[i].getKey());
-
-                if(data.getShortcuts()[i].isCtrl()) robot.keyRelease(KeyEvent.VK_CONTROL);
-                if(data.getShortcuts()[i].isShift()) robot.keyRelease(KeyEvent.VK_SHIFT);
-                if(data.getShortcuts()[i].isAlt()) robot.keyRelease(KeyEvent.VK_ALT);
-            }
-
-            windowsFinder.SetWindowPos(Application.windowsHandle, WindowsFinder.WINDOW_NONTOPMOST, 0, 0, 0, 0, 43);
-        }
-
-        else{
-            ((Text) node.getParent().lookup("#errorTxt")).setText("Handle : " + Application.windowsHandle + " - Error : " + Native.getLastError() );
-        }
-
-
-
+        Application.main.loadContent(new MainMenu(((TextField) node.getParent().lookup("#searchInput")).getText()).getContent());
     }
+
+    @FXML
+    protected void changeOrientation(){
+        Application.orientation = !Application.orientation;
+        Application.main.positionStage();
+    }
+
 }

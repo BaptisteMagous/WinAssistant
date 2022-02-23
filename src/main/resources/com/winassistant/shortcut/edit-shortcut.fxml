@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="250.0" spacing="5.0" style="-fx-background-color: #baf2cf; -fx-border-color: #396048; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.winassistant.controller.ShortcutController">
+   <children>
+      <CheckBox fx:id="ctrl" mnemonicParsing="false" onAction="#updateCtrl" text="Ctrl" />
+      <CheckBox fx:id="shift" mnemonicParsing="false" onAction="#updateShift" text="Shift" />
+      <CheckBox fx:id="alt" mnemonicParsing="false" onAction="#updateAlt" text="Alt" />
+      <ChoiceBox fx:id="key" onDragDetected="#updateKey" onAction="#updateKey" prefHeight="25.0" prefWidth="49.0" />
+      <Button fx:id="deleteShortcut" mnemonicParsing="false" onAction="#deleteShortcut" prefHeight="25.0" prefWidth="29.0" style="-fx-background-color: #ef9f9f;" text="X">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Button>
+   </children>
+</HBox>

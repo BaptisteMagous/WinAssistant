@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER_LEFT" maxWidth="280.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="280.0" style="-fx-border-color: #4f9f4f; -fx-border-width: 2px; -fx-background-color: #dfffdf; -fx-border-radius: 4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.winassistant.controller.SettingController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="92.0" prefWidth="159.0">
+         <children>
+            <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="Cuire des quiches" textAlignment="CENTER" wrappingWidth="153.13671875" VBox.vgrow="ALWAYS" />
+            <Text fx:id="shortcut" strokeType="OUTSIDE" strokeWidth="0.0" text="Ctrl + Shift + A" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <Button fx:id="edit" mnemonicParsing="false" onAction="#editArticle" prefHeight="96.0" prefWidth="66.0" style="-fx-background-color: #93a6f9; -fx-border-color: #4d58af; -fx-border-radius: 5;" text="Editer">
+         <HBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </HBox.margin></Button>
+      <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteArticle" prefHeight="96.0" prefWidth="38.0" style="-fx-background-color: #f99393; -fx-border-color: #af4d4d; -fx-border-radius: 5;" text="X">
+         <HBox.margin>
+            <Insets bottom="5.0" right="5.0" top="5.0" />
+         </HBox.margin></Button>
+   </children>
+</HBox>

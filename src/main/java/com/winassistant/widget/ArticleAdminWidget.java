@@ -1,17 +1,20 @@
 package com.winassistant.widget;
 
 import com.winassistant.data.Article;
+import com.winassistant.data.DataManager;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class ArticleWidget extends ContentPage {
+public class ArticleAdminWidget extends ContentPage {
 
-    public ArticleWidget(Article article) throws IOException {
-        fxml = "article/article.fxml";
+    public ArticleAdminWidget(int articleId) throws IOException {
+        fxml = "article/article-admin.fxml";
 
         loadContent();
+
+        Article article = DataManager.get(articleId);
 
         ((Text) content.lookup("#title")).setText(article.getTitle());
 
@@ -21,7 +24,7 @@ public class ArticleWidget extends ContentPage {
         }
 
         ((Text) content.lookup("#shortcut")).setText(shortcuts);
-        ((Button) content.lookup("#useShortcut")).setUserData(article);
-
+        ((Button) content.lookup("#edit")).setUserData(articleId);
+        ((Button) content.lookup("#delete")).setUserData(articleId);
     }
 }

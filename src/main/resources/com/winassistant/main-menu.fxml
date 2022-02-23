@@ -4,22 +4,15 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.winassistant.controller.Controller">
    <children>
       <ScrollPane fx:id="articles" fitToWidth="true" hbarPolicy="NEVER" minHeight="263.0" prefHeight="386.0" prefWidth="300.0" />
-      <Pane fx:id="addArticlePanel" prefHeight="118.0" prefWidth="600.0" style="-fx-background-color: #dfefff;">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #00000000;" text="Ajouter un article" />
-         </children>
-      </Pane>
       <HBox prefHeight="0.0" prefWidth="600.0">
          <children>
             <TextField fx:id="searchInput" prefHeight="25.0" prefWidth="324.0" promptText="Rechercher" />
-            <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="🔍" />
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="96.0" text="🔍" />
          </children>
       </HBox>
    </children>

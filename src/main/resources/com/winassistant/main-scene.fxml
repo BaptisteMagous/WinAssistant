@@ -18,7 +18,8 @@
                   </image>
                </ImageView>
             </graphic></Button>
-         <Button fx:id="userButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#goToUserProfile" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #00000000;" text="Options" textAlignment="CENTER" />
+         <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#changeOrientation" prefHeight="25.0" prefWidth="47.0" text="&lt;-&gt;" />
+         <Button fx:id="userButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#goToUserProfile" prefHeight="50.0" prefWidth="206.0" style="-fx-background-color: #00000000;" text="Options" textAlignment="CENTER" />
          <Button fx:id="hideButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onMinimiseButtonClick" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #9fDf9f;" text="X" textAlignment="CENTER" />
       </children>
    </HBox>

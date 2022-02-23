@@ -72,16 +72,18 @@ public interface WindowsFinder extends StdCallLibrary
     }
 
     class ExampleCallbackImpl implements WinsowsCallback {
-        public String windowsToSearch = "";
         public boolean invoke(Pointer hwnd, StringByReference windowsToSearch) {
-            StringByReference name = new StringByReference();
+            System.out.println("\nEnumerating Windows - Handle : " + hwnd);
+            StringByReference name = new StringByReference(10000);
             WindowsFinder.INSTANCE.GetWindowTextA(hwnd, name, 100);
+            System.out.println("Enumerating Windows - Name : " + name.getValue());
 
-            if(name.getValue().contains(windowsToSearch.getValue())){
+            if(name.getValue() != null && name.getValue().contains(windowsToSearch.getValue())){
                 Application.windowsHandle = hwnd;
                 return false;
+            }else{
+                return true;
             }
-            return true;
         }
     }
 }

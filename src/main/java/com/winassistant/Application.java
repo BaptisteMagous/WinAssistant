@@ -1,7 +1,9 @@
 package com.winassistant;
 
 import com.sun.jna.Pointer;
+import com.winassistant.data.Article;
 import com.winassistant.data.DataManager;
+import com.winassistant.data.Shortcut;
 import com.winassistant.widget.MainMenu;
 import com.winassistant.widget.MainScene;
 import javafx.geometry.Rectangle2D;
@@ -18,6 +20,9 @@ public class Application extends javafx.application.Application {
     public static Pointer windowsHandle = null;
 
     public static Application main;
+    public static boolean orientation = true;
+    public static Article draftArticle = new Article("", "", new Shortcut[0]);
+
     MainScene mainScene;
     Stage stage;
 
@@ -51,7 +56,12 @@ public class Application extends javafx.application.Application {
 
     public void positionStage(){
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-        stage.setX(bounds.getWidth() - stage.getWidth()-10);
+
+        if(Application.orientation)
+            stage.setX(bounds.getWidth() - stage.getWidth()-10);
+        else
+            stage.setX(10);
+
         stage.setY(bounds.getHeight() - stage.getHeight()-10);
     }
 

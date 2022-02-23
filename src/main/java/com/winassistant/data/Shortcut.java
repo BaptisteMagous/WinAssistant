@@ -5,9 +5,9 @@ public class Shortcut {
     private boolean ctrl;
     private boolean shift;
     private boolean alt;
-    private char key;
+    private String key;
 
-    public Shortcut(boolean ctrl, boolean shift, boolean alt, char key) {
+    public Shortcut(boolean ctrl, boolean shift, boolean alt, String key) {
         this.ctrl = ctrl;
         this.shift = shift;
         this.alt = alt;
@@ -38,11 +38,11 @@ public class Shortcut {
         this.alt = alt;
     }
 
-    public char getKey() {
+    public String getKey() {
         return key;
     }
 
-    public void setKey(char key) {
+    public void setKey(String key) {
         this.key = key;
     }
 
